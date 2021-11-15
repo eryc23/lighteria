@@ -14,7 +14,9 @@ export const Sacola = () =>{
                 <Image source={{uri: 'https://img.icons8.com/ios/500/shopping-bag--v1.png'}} style={styles.imagem} />
                 {itensCheckout.length > 0 ? (
                 <View style={styles.containerQuantidade}>
-                    <Text style={styles.textoQuantidade}>{itensCheckout.reduce((acumulado, atual) => acumulado + atual.quantidade)}</Text>
+                    <Text style={styles.textoQuantidade}>{itensCheckout.reduce(
+                        (acumulado, atual) => acumulado + atual.quantidade, 0
+                    )}</Text>
                 </View>) : null}
             </View>
         </TouchableOpacity>

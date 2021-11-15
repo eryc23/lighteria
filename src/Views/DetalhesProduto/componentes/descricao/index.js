@@ -1,11 +1,13 @@
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
+import { DataContext } from '../../../../provider';
 import { Botao } from '../../../../componentes/botao';
 
 
 export const DescricaoItem = (props) =>{
+    const {adicionarItem} = useContext(DataContext);
     const navigation = useNavigation();
     const {imagem, estudio, itemDesc, itemName, titulo, preco, id} = props;
 
@@ -24,7 +26,17 @@ export const DescricaoItem = (props) =>{
                     <Text>{itemDesc}</Text>
                     <View style={styles.rodape}>
                         <Text style={styles.moeda}>R$ {preco}</Text>
-                        <Botao titulo='COMPRAR' width='100%' onPress={() => navigation.push('Checkout')} />
+                        <Botao titulo='COMPRAR' width='100%' onPress={() => {
+                            adicionarItem({
+                                estudio,
+                                itemName,
+                                titulo,
+                                id,
+                                imagem,
+                                preco,
+                            }); 
+                            navigation.push('Checkout');
+                        }} />
                     </View>
                 </View>
             </View>

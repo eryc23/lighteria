@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     texto: {
         fontWeight: '600',
         fontSize: 16,
-        color: '#fff'
+        color: '#fff',
+        textAlign: 'center'
     }
 })
